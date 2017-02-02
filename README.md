@@ -2,8 +2,8 @@
 Simple api on nodejs
 
 Used libraries:
-    - Express
-    - Mongoose
+  - Express
+  - Mongoose
 
 Implemented methods:
   - GET
