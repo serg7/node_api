@@ -4,6 +4,7 @@ Simple api on nodejs
 Used libraries:
   - Express
   - Mongoose
+  - Gulp
 
 Implemented methods:
   - GET
