@@ -26,10 +26,13 @@ var routes = function (Book) {
 
     bookRouter.route('/books/:bookId')
         .get(function (request, response) {
-
             console.log(request);
-            response.json(request.book);
 
+            var returnBook = request.book.toJSON();
+            returnBook.links = {};
+            var newLink = 'http://' + request.headers.host + '/api/books?genre=' + returnBook.genre;
+            returnBook.links.FilterByThisGenre = newLink.replace(' ' , '%20');
+            response.json(returnBook);
         })
         .put(function (request, response) {
             book.title = request.body.title;

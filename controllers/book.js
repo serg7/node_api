@@ -28,9 +28,20 @@ var controller = function(Book) {
 
         Book.find(query, function (error, books) {
             if (error) {
-                response.status(500).send(err);
-            } else {
-                response.json(books);
+                response.status(500).send(error);
+            }
+            else {
+
+                var returnBooks = [];
+                books.forEach(function (elem, index, array) {
+                    var newBook = elem.toJSON();
+                    newBook.links = {};
+                    newBook.links.self = 'http://' + request.headers.host + '/api/books/' + newBook._id;
+
+                    returnBooks.push(newBook);
+                });
+                
+                response.json(returnBooks);
             }
         });
     };
